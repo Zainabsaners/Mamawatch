@@ -1,18 +1,18 @@
 /* styles/tokens.css */
 @theme inline {
-  --color-primary: #0094F7;
-  --color-primary-hover: #0078CC;
-  --color-primary-light: #E5F4FF;
-  --color-bg-base: #F4F7F9;
+  --color-primary: #7DD3FC;
+  --color-primary-hover: #38BDF8;
+  --color-primary-light: #F0F9FF;
+  --color-bg-base: #FFFAFA;
   --color-surface: #FFFFFF;
-  --color-border: #E2E8F0;
+  --color-border: #F1F5F9;
   
-  --color-status-normal: #10B981;
-  --color-status-warning: #F59E0B;
-  --color-status-critical: #EF4444;
+  --color-status-normal: #6EE7B7;
+  --color-status-warning: #FDE047;
+  --color-status-critical: #FDA4AF;
   
-  --color-text-main: #111827;
-  --color-text-muted: #6B7280;
+  --color-text-main: #334155;
+  --color-text-muted: #94A3B8;
 
   /* shadcn/ui bridge variables */
   --color-background: var(--color-bg-base);
@@ -21,39 +21,38 @@
   --color-card-foreground: var(--color-text-main);
   --color-popover: var(--color-surface);
   --color-popover-foreground: var(--color-text-main);
-  --color-primary-foreground: #FFFFFF;
+  --color-primary-foreground: #0C4A6E;
   --color-secondary: var(--color-primary-light);
-  --color-secondary-foreground: var(--color-primary);
+  --color-secondary-foreground: var(--color-primary-hover);
   --color-muted: var(--color-border);
   --color-muted-foreground: var(--color-text-muted);
-  --color-accent: var(--color-border);
+  --color-accent: #F8FAFC;
   --color-accent-foreground: var(--color-text-main);
   --color-destructive: var(--color-status-critical);
-  --color-destructive-foreground: #FFFFFF;
+  --color-destructive-foreground: #7F1D1D;
   --color-ring: var(--color-primary);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
   --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 8px);
 
-  --shadow-alert: 0 0 0 2px rgba(239,68,68,0.3);
-  --shadow-warning: 0 0 0 2px rgba(245,158,11,0.25);
+  --shadow-alert: 0 4px 20px -2px rgba(253, 164, 175, 0.4);
+  --shadow-warning: 0 4px 20px -2px rgba(253, 224, 71, 0.4);
 }
 
 :root {
-  --radius: 0.5rem;
+  --radius: 1rem;
 }
 
 .dark {
-  --color-bg-base: #0B1120;
-  --color-surface: #111827;
-  --color-border: #1F2937;
+  --color-bg-base: #0F172A;
+  --color-surface: #1E293B;
+  --color-border: #334155;
   --color-text-main: #F8FAFC;
   --color-text-muted: #94A3B8;
-  --color-primary-light: #1E3A8A;
-  --color-primary: #0284c7;
+  --color-primary-light: #0369A1;
+  --color-primary: #38BDF8;
 
-  /* shadcn/ui bridge variables (dark mode exceptions if any) */
   --color-background: var(--color-bg-base);
   --color-foreground: var(--color-text-main);
   --color-card: var(--color-surface);

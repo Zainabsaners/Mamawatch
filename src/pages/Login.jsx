@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Activity, Shield, ActivitySquare, Loader2, AlertCircle } from 'lucide-react';
+import { Baby, Shield, HeartPulse, Loader2, AlertCircle } from 'lucide-react';
 import { useTheme } from '../app/providers/ThemeProvider';
 import { useAuth } from '../features/auth/hooks';
 import { Button } from '../components/ui/button';
@@ -44,12 +44,12 @@ export default function Login() {
         {/* Decorative Grid */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] [background-size:24px_24px]"></div>
 
-        <div className="w-24 h-24 bg-white/10 backdrop-blur rounded-2xl flex items-center justify-center mb-8 shadow-xl border border-white/20">
-          <Activity size={56} className="text-white" />
+        <div className="w-24 h-24 bg-white/10 backdrop-blur rounded-3xl flex items-center justify-center mb-8 shadow-xl border border-white/20">
+          <Baby size={56} className="text-white" />
         </div>
-        <h1 className="text-4xl font-black tracking-tight mb-4 z-10 w-full drop-shadow-md">Mamawatch Clinical Dashboard</h1>
-        <p className="text-blue-100 text-lg max-w-md w-full font-medium leading-relaxed drop-shadow">
-          Continuous, wireless neonatal telemetry for rural and under-resourced hospitals. Monitor vitals anywhere.
+        <h1 className="text-4xl font-black tracking-tight mb-4 z-10 w-full drop-shadow-md">Mamawatch Neonatal Care</h1>
+        <p className="text-blue-50 text-lg max-w-md w-full font-medium leading-relaxed drop-shadow">
+          Continuous, gentle, and reliable monitoring for the fragile ones. Giving caregivers peace of mind anywhere.
         </p>
 
         <div className="absolute bottom-12 flex gap-8 w-full justify-center opacity-80">
@@ -58,7 +58,7 @@ export default function Login() {
             <span className="text-xs uppercase tracking-widest font-bold">Secure</span>
           </div>
           <div className="flex flex-col items-center">
-            <ActivitySquare size={24} className="mb-2" />
+            <HeartPulse size={24} className="mb-2" />
             <span className="text-xs uppercase tracking-widest font-bold">Real-time</span>
           </div>
         </div>
@@ -68,11 +68,11 @@ export default function Login() {
       <div className="flex-1 flex flex-col justify-center items-center px-4">
         <div className="w-full max-w-md p-8 md:p-12 bg-[var(--color-surface)] rounded-2xl shadow-xl border border-[var(--color-border)]">
           <div className="text-center mb-10">
-            <div className="w-16 h-16 bg-[var(--color-primary)] rounded-xl mx-auto flex items-center justify-center mb-6 lg:hidden">
-              <Activity size={32} className="text-white" />
+            <div className="w-16 h-16 bg-[var(--color-primary)] rounded-2xl mx-auto flex items-center justify-center mb-6 lg:hidden">
+              <Baby size={32} className="text-white" />
             </div>
-            <h2 className="text-3xl font-extrabold text-[var(--color-text-main)] mb-2 tracking-tight">Staff Portal</h2>
-            <p className="text-[var(--color-text-muted)] font-medium">Enter your credentials to access the ward</p>
+            <h2 className="text-3xl font-extrabold text-[var(--color-text-main)] mb-2 tracking-tight">Caregiver Portal</h2>
+            <p className="text-[var(--color-text-muted)] font-medium">Sign in to monitor and care for your infants</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -124,13 +124,13 @@ export default function Login() {
                   Authenticating...
                 </>
               ) : (
-                'Secure Login'
+                'Sign In'
               )}
             </Button>
           </form>
 
           <div className="mt-8 text-center text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">
-            Authorized Personnel Only
+            Neonatal Care System
           </div>
         </div>
       </div>

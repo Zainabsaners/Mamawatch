@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Activity, Thermometer, HeartPulse, Settings, BellRing } from 'lucide-react';
+import { Activity, Thermometer, HeartPulse, Settings, BellRing, Baby } from 'lucide-react';
 import { useDevices } from '../features/devices/hooks';
 import { useLatestTelemetry } from '../features/telemetry/hooks';
 import { getConsolidatedStatus } from '../lib/utils/vitals';
@@ -25,10 +25,11 @@ const PatientCard = ({ device, onAlertStateChange }) => {
     return (
       <div
         onClick={() => navigate(`/devices`)}
-        className="group p-5 rounded border border-[var(--color-border)] cursor-pointer hover:shadow-md transition-all bg-[var(--color-surface)] text-center flex flex-col justify-center items-center h-40"
+        className="group p-5 rounded-2xl border border-[var(--color-border)] cursor-pointer hover:shadow-md transition-all bg-[var(--color-surface)] text-center flex flex-col justify-center items-center h-40"
       >
+        <Baby className="w-8 h-8 text-[var(--color-text-muted)] opacity-50 mb-2" />
         <span className="text-[var(--color-text-muted)] font-medium">Unassigned / No Vitals</span>
-        <span className="text-xs text-[var(--color-text-muted)] mt-1 opacity-70">Device: {device.deviceKey}</span>
+        <span className="text-xs text-[var(--color-text-muted)] mt-1 opacity-70">Monitor: {device.deviceKey}</span>
       </div>
     );
   }
@@ -46,7 +47,7 @@ const PatientCard = ({ device, onAlertStateChange }) => {
     <div
       onClick={() => navigate(`/baby/${device.deviceKey}`)}
       className={cn(
-        "group p-5 rounded border cursor-pointer hover:shadow-md transition-all relative overflow-hidden bg-[var(--color-surface)]",
+        "group p-5 rounded-2xl border cursor-pointer hover:shadow-md transition-all relative overflow-hidden bg-[var(--color-surface)]",
         isAlert ? "border-red-300 dark:border-red-900/50 shadow-[var(--shadow-alert)]" : "border-[var(--color-border)] hover:border-[var(--color-primary-hover)]"
       )}
     >
@@ -57,7 +58,7 @@ const PatientCard = ({ device, onAlertStateChange }) => {
           <h3 className="text-lg font-bold text-[var(--color-text-main)] group-hover:text-[var(--color-primary)] transition-colors">
             {infant.firstName} {infant.lastName}
           </h3>
-          <p className="text-xs font-semibold text-[var(--color-text-muted)] mt-0.5">Device: {device.deviceKey} • Updated {formatRelativeTime(receivedAt)}</p>
+          <p className="text-xs font-semibold text-[var(--color-text-muted)] mt-0.5">Monitor: {device.deviceKey} • Updated {formatRelativeTime(receivedAt)}</p>
         </div>
         <div className={cn(
           "px-2.5 py-1 rounded text-[10px] font-bold uppercase tracking-wider",
@@ -68,7 +69,7 @@ const PatientCard = ({ device, onAlertStateChange }) => {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-[var(--color-bg-base)] p-3 rounded border border-[var(--color-border)]">
+        <div className="bg-[var(--color-bg-base)] p-3 rounded-xl border border-[var(--color-border)]">
           <div className="flex items-center gap-1.5 text-[var(--color-text-muted)] mb-1">
             <HeartPulse size={14} />
             <span className="text-xs uppercase tracking-wider font-semibold">HR</span>
@@ -81,7 +82,7 @@ const PatientCard = ({ device, onAlertStateChange }) => {
           </div>
         </div>
 
-        <div className="bg-[var(--color-bg-base)] p-3 rounded border border-[var(--color-border)]">
+        <div className="bg-[var(--color-bg-base)] p-3 rounded-xl border border-[var(--color-border)]">
           <div className="flex items-center gap-1.5 text-[var(--color-text-muted)] mb-1">
             <Thermometer size={14} />
             <span className="text-xs uppercase tracking-wider font-semibold">Temp</span>
@@ -133,19 +134,19 @@ export default function Dashboard() {
   return (
     <div>
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-[var(--color-text-main)]">Hospital Overview</h1>
-        <p className="text-[var(--color-text-muted)] mt-1">Live status for <span className="text-[var(--color-primary)] font-semibold">Neonatal Ward A</span></p>
+        <h1 className="text-3xl font-bold text-[var(--color-text-main)]">Neonatal Care Center</h1>
+        <p className="text-[var(--color-text-muted)] mt-1">Nursery overview for <span className="text-[var(--color-primary)] font-semibold">Neonatal Ward A</span></p>
       </header>
 
       {/* Summary Stats Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {[
-          { label: 'Registered Devices', value: totalMonitored, sub: 'Total fleet size', icon: Activity, color: 'text-blue-600', bg: 'bg-blue-100' },
-          { label: 'Online Devices', value: activeDevices, sub: 'Actively connected', icon: Settings, color: 'text-purple-600', bg: 'bg-purple-100' },
-          { label: 'Real-time Stream', value: 'Live', sub: 'Awaiting SSE Connection', icon: HeartPulse, color: 'text-emerald-600', bg: 'bg-emerald-100' },
+          { label: 'Total Infants', value: totalMonitored, sub: 'Registered monitors', icon: Baby, color: 'text-blue-500', bg: 'bg-blue-50' },
+          { label: 'Stable', value: activeDevices, sub: 'All vitals normal', icon: Settings, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+          { label: 'Monitoring', value: 'Active', sub: 'Monitoring in progress', icon: HeartPulse, color: 'text-purple-500', bg: 'bg-purple-50' },
         ].map((stat, i) => (
-          <div key={i} className="flex p-5 rounded border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm">
-            <div className={cn("w-12 h-12 rounded-lg flex items-center justify-center mr-4 shrink-0 transition-colors", stat.bg)}>
+          <div key={i} className="flex p-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm">
+            <div className={cn("w-12 h-12 rounded-xl flex items-center justify-center mr-4 shrink-0 transition-colors", stat.bg)}>
               <stat.icon className={stat.color} size={24} />
             </div>
             <div>
@@ -161,10 +162,10 @@ export default function Dashboard() {
       <h2 className="text-xl font-bold text-[var(--color-text-main)] mb-4">Patient Monitoring</h2>
 
       {devices.length === 0 ? (
-        <div className="p-8 text-center border border-dashed border-[var(--color-border)] rounded-lg bg-[var(--color-bg-base)]">
-          <Activity className="mx-auto h-12 w-12 text-[var(--color-text-muted)] mb-3 opacity-50" />
-          <h3 className="text-lg font-semibold text-[var(--color-text-main)]">No Devices Registered</h3>
-          <p className="text-sm text-[var(--color-text-muted)] max-w-sm mx-auto mt-1 mb-4">There are currently no NeoGuard devices registered to this ward.</p>
+        <div className="p-8 text-center border border-dashed border-[var(--color-border)] rounded-2xl bg-[var(--color-bg-base)]">
+          <Baby className="mx-auto h-12 w-12 text-[var(--color-text-muted)] mb-3 opacity-50" />
+          <h3 className="text-lg font-semibold text-[var(--color-text-main)]">No Infants Registered</h3>
+          <p className="text-sm text-[var(--color-text-muted)] max-w-sm mx-auto mt-1 mb-4">There are currently no monitors paired with infants.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">

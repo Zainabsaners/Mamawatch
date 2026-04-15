@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wifi, Battery, CheckCircle2, AlertTriangle, MonitorSmartphone, PowerOff, MoreVertical } from 'lucide-react';
+import { Wifi, Battery, CheckCircle2, AlertTriangle, MonitorSmartphone, PowerOff, MoreVertical, Baby } from 'lucide-react';
 import { useDevices, useAssignment, useUnassignDevice, useGenerateCredentials } from '../features/devices/hooks';
 import { DEVICE_STATUS } from '../constants/status';
 import { Skeleton } from '../components/ui/skeleton';
@@ -96,12 +96,12 @@ const DeviceRow = ({ device, onAssign }) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {assignment?.active ? (
-              <DropdownMenuItem onClick={handleUnassign} className="text-red-600 focus:bg-red-50 dark:focus:bg-red-900/20 focus:text-red-600">
-                Unassign Patient
+              <DropdownMenuItem onClick={handleUnassign} className="text-rose-600 focus:bg-rose-50 dark:focus:bg-rose-900/20 focus:text-rose-600">
+                Unassign Infant
               </DropdownMenuItem>
             ) : (
               <DropdownMenuItem onClick={() => onAssign(device)}>
-                Assign Patient
+                Assign Infant
               </DropdownMenuItem>
             )}
             {user?.role === 'admin' && (
@@ -127,13 +127,13 @@ export default function Devices() {
     <div className="max-w-7xl mx-auto space-y-6">
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-[var(--color-text-main)] flex items-center gap-3">
-          <MonitorSmartphone className="text-[var(--color-primary)]" size={32} />
-          Device Fleet Management
+          <Baby className="text-[var(--color-primary)]" size={32} />
+          Infant Monitors
         </h1>
-        <p className="text-[var(--color-text-muted)] mt-1">Monitor connectivity, status, and view patient assignment roles.</p>
+        <p className="text-[var(--color-text-muted)] mt-1">Monitor connectivity and infant assignment status.</p>
       </header>
 
-      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-md shadow-sm overflow-hidden">
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl shadow-sm overflow-hidden">
         {isLoading ? (
           <div className="p-6 space-y-4">
             <Skeleton className="h-8 w-full" />
@@ -142,8 +142,8 @@ export default function Devices() {
           </div>
         ) : devices?.length === 0 ? (
           <div className="p-12 text-center text-[var(--color-text-muted)]">
-            <MonitorSmartphone className="mx-auto h-12 w-12 opacity-20 mb-4" />
-            <p>No devices found.</p>
+            <Baby className="mx-auto h-12 w-12 opacity-20 mb-4" />
+            <p>No monitors found.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">

@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Activity, LayoutDashboard, MonitorSmartphone, LogOut, Moon, Sun, User as UserIcon } from 'lucide-react';
+import { Activity, LayoutDashboard, MonitorSmartphone, LogOut, Moon, Sun, User as UserIcon, Baby, Users } from 'lucide-react';
 import { useTheme } from '../app/providers/ThemeProvider';
 import { useAuth } from '../features/auth/hooks';
 import { ConnectionPill } from './ui/ConnectionPill';
@@ -24,8 +24,8 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-[var(--color-surface)] border-r border-[var(--color-border)] flex flex-col h-screen sticky top-0 shrink-0 transition-colors duration-300">
       <div className="px-6 py-8 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-[var(--color-primary)] text-white flex items-center justify-center font-bold shadow-md">
-          <Activity size={24} />
+        <div className="w-10 h-10 rounded-2xl bg-[var(--color-primary)] text-white flex items-center justify-center font-bold shadow-sm">
+          <Baby size={24} className="text-[var(--color-primary-foreground)]" />
         </div>
         <h2 className="text-xl font-bold tracking-tight text-[var(--color-text-main)]">Mamawatch</h2>
       </div>
@@ -36,12 +36,12 @@ export default function Sidebar() {
         <div className="flex flex-col gap-2">
           <NavLink to="/dashboard" className={navLinkClasses}>
             <LayoutDashboard size={20} />
-            <span>Dashboard</span>
+            <span>Baby Overview</span>
           </NavLink>
 
           <NavLink to="/devices" className={navLinkClasses}>
-            <MonitorSmartphone size={20} />
-            <span>Devices</span>
+            <Users size={20} />
+            <span>Infants List</span>
           </NavLink>
         </div>
       </nav>
