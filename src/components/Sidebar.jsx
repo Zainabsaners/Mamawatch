@@ -27,7 +27,7 @@ export default function Sidebar() {
         <div className="w-10 h-10 rounded-2xl bg-[var(--color-primary)] text-white flex items-center justify-center font-bold shadow-sm">
           <Baby size={24} className="text-[var(--color-primary-foreground)]" />
         </div>
-        <h2 className="text-xl font-bold tracking-tight text-[var(--color-text-main)]">Mamawatch</h2>
+        <h2 className="text-xl font-bold tracking-tight text-[var(--color-text-main)]">TotoWatch</h2>
       </div>
 
       <nav className="flex-1 px-4 overflow-y-auto">

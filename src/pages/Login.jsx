@@ -55,7 +55,7 @@ export default function Login() {
           <div className="w-24 h-24 bg-white/60 backdrop-blur-md rounded-[1.5rem] flex items-center justify-center mb-8 shadow-sm border border-white/50 z-10">
             <Baby size={48} className="text-[var(--color-primary)]" />
           </div>
-          <h1 className="text-3xl font-black tracking-tight mb-4 z-10 w-full text-[var(--color-text-main)]">Mamawatch</h1>
+          <h1 className="text-3xl font-black tracking-tight mb-4 z-10 w-full text-[var(--color-text-main)]">TotoWatch</h1>
           <p className="text-[var(--color-text-muted)] text-base max-w-xs font-medium leading-relaxed">
             Continuous, gentle, and reliable monitoring for the fragile ones. Giving you peace of mind.
           </p>
